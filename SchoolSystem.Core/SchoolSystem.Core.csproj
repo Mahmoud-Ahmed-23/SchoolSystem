@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj" />
+    <ProjectReference Include="..\SchoolSystem.Service\SchoolSystem.Service.csproj" />
+  </ItemGroup>
+
 </Project>
