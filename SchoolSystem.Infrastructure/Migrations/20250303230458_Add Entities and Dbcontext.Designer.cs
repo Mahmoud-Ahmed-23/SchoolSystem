@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SchoolSystem.Infrastructure._Data;
+using SchoolSystem.Infrastructure.DbContexts;
 
 #nullable disable
 
 namespace SchoolSystem.Infrastructure.Migrations
 {
-    [DbContext(typeof(SchoolDbContext))]
+	[DbContext(typeof(SchoolDbContext))]
     [Migration("20250303230458_Add Entities and Dbcontext")]
     partial class AddEntitiesandDbcontext
     {

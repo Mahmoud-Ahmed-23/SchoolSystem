@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Infrastructure._Data.Configurations
+namespace SchoolSystem.Infrastructure.Configurations
 {
 	internal class DepartmentSubjectConfiguration : IEntityTypeConfiguration<DepartmentSubject>
 	{

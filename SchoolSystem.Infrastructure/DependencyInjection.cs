@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SchoolSystem.Infrastructure._Data;
-using SchoolSystem.Infrastructure._Data.Abstracts;
+using SchoolSystem.Infrastructure.Abstracts;
+using SchoolSystem.Infrastructure.DbContexts;
+using SchoolSystem.Infrastructure.Repositories;
+using SchoolSystem.Infrastructure.UnitOfwork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,8 @@ namespace SchoolSystem.Infrastructure
 			options.UseSqlServer(configuration.GetConnectionString("SchooldbContext")));
 
 			services.AddTransient(typeof(ISchoolSystemDbInitializer), typeof(SchoolSystemDbInitializer));
+			services.AddTransient(typeof(IStudentRepository), typeof(StudentRepository));
+			services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
 
 			return services;
 		}
