@@ -13,6 +13,6 @@ namespace SchoolSystem.Infrastructure.Repositories
 	internal class StudentRepository(SchoolDbContext dbContext) : IStudentRepository
 	{
 		public async Task<List<Student>> GetAllStudents()
-		=> await dbContext.Students./*Include(d => d.Department).*/ToListAsync();
+		=> await dbContext.Students.Include(d => d.Department).ToListAsync();
 	}
 }

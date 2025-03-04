@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SchoolSystem.Core.Mapping.Students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace SchoolSystem.Core
 		public static IServiceCollection AddCoreServices(this IServiceCollection services)
 		{
 			services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
+			services.AddAutoMapper(typeof(StudentProfile));
+
 			return services;
 		}
 	}
