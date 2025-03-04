@@ -1,4 +1,4 @@
-﻿using SchoolSystem.Infrastructure._Data.Abstracts;
+﻿using SchoolSystem.Infrastructure.Abstracts;
 
 namespace SchoolSystem.APIs.Extensions
 {

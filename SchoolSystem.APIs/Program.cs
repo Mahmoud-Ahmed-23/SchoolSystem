@@ -1,6 +1,8 @@
 
 using SchoolSystem.APIs.Extensions;
+using SchoolSystem.Core;
 using SchoolSystem.Infrastructure;
+using SchoolSystem.Service;
 
 namespace SchoolSystem.APIs
 {
@@ -17,7 +19,9 @@ namespace SchoolSystem.APIs
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-			builder.Services.AddInfrastructureServices(builder.Configuration);
+			builder.Services.AddInfrastructureServices(builder.Configuration)
+							.AddService_Services()
+							.AddCoreServices();
 
 
 			var app = builder.Build();

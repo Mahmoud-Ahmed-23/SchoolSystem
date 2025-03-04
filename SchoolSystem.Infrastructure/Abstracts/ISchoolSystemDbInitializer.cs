@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Infrastructure._Data.Abstracts
+namespace SchoolSystem.Infrastructure.Abstracts
 {
 	public interface ISchoolSystemDbInitializer
 	{

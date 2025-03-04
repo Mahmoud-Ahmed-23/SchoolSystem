@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SchoolSystem.Infrastructure._Data;
+using SchoolSystem.Infrastructure.DbContexts;
 
 #nullable disable
 
 namespace SchoolSystem.Infrastructure.Migrations
 {
-    [DbContext(typeof(SchoolDbContext))]
+	[DbContext(typeof(SchoolDbContext))]
     partial class SchoolDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
