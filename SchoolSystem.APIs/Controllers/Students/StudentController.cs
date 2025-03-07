@@ -16,9 +16,16 @@ namespace SchoolSystem.APIs.Controllers.Students
 
 
 		[HttpGet("GetStudentList")]
-		public async Task<ActionResult<List<GetStudentListResponse>>> GetStudentList()
+		public async Task<ActionResult<List<ReturnStudentResponse>>> GetStudentList()
 		{
 			var result = await mediator.Send(new GetStudentListQuery());
+			return Ok(result);
+		}
+
+		[HttpGet("GetStudentById/{id}")]
+		public async Task<ActionResult<ReturnStudentResponse>> GetStudentById([FromRoute] int id)
+		{
+			var result = await mediator.Send(new GetStudentByIdQuery(id));
 			return Ok(result);
 		}
 	}

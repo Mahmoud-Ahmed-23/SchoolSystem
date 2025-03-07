@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Core.Features.Students.Results
 {
-	public class GetStudentListResponse
+	public class ReturnStudentResponse
 	{
 		public string? Name { get; set; }
 

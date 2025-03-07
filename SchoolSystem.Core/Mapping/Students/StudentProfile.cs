@@ -13,7 +13,7 @@ namespace SchoolSystem.Core.Mapping.Students
 	{
 		public StudentProfile()
 		{
-			CreateMap<Student, GetStudentListResponse>()
+			CreateMap<Student, ReturnStudentResponse>()
 				.ForMember(dest => dest.DepartmentName, option => option.MapFrom(src => src.Department!.Name));
 		}
 	}

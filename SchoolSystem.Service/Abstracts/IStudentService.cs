@@ -10,5 +10,6 @@ namespace SchoolSystem.Service.Abstracts
 	public interface IStudentService
 	{
 		Task<List<Student>> GetStudentsList();
+		Task<Student> GetStudentById(int id);
 	}
 }

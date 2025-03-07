@@ -16,5 +16,11 @@ namespace SchoolSystem.Service.Implementation
 			var students = await _unitOfWork.StudentRepository.GetAllStudents();
 			return students;
 		}
+
+		public async Task<Student> GetStudentById(int id)
+		{
+			var student = await _unitOfWork.GetRepository<Student>().GetByIdAsync(id);
+			return student;
+		}
 	}
 }
