@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SchoolProject.Data.Entities;
 using SchoolSystem.Core.Bases;
 using SchoolSystem.Core.Features.Students.Results;
 using System;
@@ -10,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Core.Features.Students.Queries.Models
 {
-	public class GetStudentListQuery : IRequest<Response<List<ReturnStudentResponse>>>
+	public class GetStudentByIdQuery : IRequest<Response<ReturnStudentResponse>>
 	{
-
+		public int Id { get; set; }
+		public GetStudentByIdQuery(int id)
+		{
+			Id = id;
+		}
 	}
 }
