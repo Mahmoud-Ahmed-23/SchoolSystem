@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolSystem.Infrastructure.InfastructureBases.GenericRepos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace SchoolSystem.Infrastructure.Abstracts
 	{
 
 		IStudentRepository StudentRepository { get; }
+
+		IGenericRepository<T> GetRepository<T>() where T : class;
 
 		Task<int> CompleteAsync();
 	}

@@ -1,7 +1,9 @@
 ﻿using SchoolSystem.Infrastructure.Abstracts;
 using SchoolSystem.Infrastructure.DbContexts;
+using SchoolSystem.Infrastructure.InfastructureBases.GenericRepos;
 using SchoolSystem.Infrastructure.Repositories;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +16,11 @@ namespace SchoolSystem.Infrastructure.UnitOfwork
 
 		private readonly Lazy<IStudentRepository> _studentRepository;
 		private readonly SchoolDbContext _dbContext;
-
+		private readonly ConcurrentDictionary<string, object> _repositories;
 		public UnitOfWork(SchoolDbContext dbContext)
 		{
 			_dbContext = dbContext;
+			_repositories = new ConcurrentDictionary<string, object>();
 			_studentRepository = new Lazy<IStudentRepository>(() => new StudentRepository(dbContext));
 		}
 
@@ -31,6 +34,11 @@ namespace SchoolSystem.Infrastructure.UnitOfwork
 		public async ValueTask DisposeAsync()
 		{
 			await _dbContext.DisposeAsync();
+		}
+
+		public IGenericRepository<T> GetRepository<T>() where T : class
+		{
+			return (IGenericRepository<T>)_repositories.GetOrAdd(typeof(T).Name, new GenericRepository<T>(_dbContext));
 		}
 	}
 }
