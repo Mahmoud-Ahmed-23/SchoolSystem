@@ -17,6 +17,9 @@ namespace SchoolSystem.Data.AppMetaData
 			public const string prefix = Rule + "student";
 			public const string list = prefix + "/list";
 			public const string id = prefix + "/{id}";
+			public const string add = prefix + "/add";
+			public const string Edit = prefix + "/Edit";
+			public const string Delete = prefix + "/{id}";
 		}
 	}
 }

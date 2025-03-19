@@ -1,6 +1,7 @@
 
 using SchoolSystem.APIs.Extensions;
 using SchoolSystem.Core;
+using SchoolSystem.Core.Middlewares;
 using SchoolSystem.Infrastructure;
 using SchoolSystem.Service;
 
@@ -26,6 +27,7 @@ namespace SchoolSystem.APIs
 
 			var app = builder.Build();
 
+			app.UseMiddleware<ErrorHandlerMiddleware>();
 			await app.InitializerSchoolSystemDbContextAsync();
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())

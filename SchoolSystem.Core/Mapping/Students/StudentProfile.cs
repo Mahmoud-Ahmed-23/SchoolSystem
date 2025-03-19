@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SchoolProject.Data.Entities;
+using SchoolSystem.Core.Features.Students.Commands.Models;
 using SchoolSystem.Core.Features.Students.Results;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace SchoolSystem.Core.Mapping.Students
 		{
 			CreateMap<Student, ReturnStudentResponse>()
 				.ForMember(dest => dest.DepartmentName, option => option.MapFrom(src => src.Department!.Name));
+
+			CreateMap<AddStudentCommand, Student>();
+
+			CreateMap<EditStudentCommand, Student>();
 		}
 	}
 }
