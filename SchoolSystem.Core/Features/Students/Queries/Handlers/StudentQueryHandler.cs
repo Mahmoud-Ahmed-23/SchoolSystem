@@ -31,6 +31,8 @@ namespace SchoolSystem.Core.Features.Students.Queries.Handlers
 		{
 			var student = await studentService.GetStudentById(request.Id);
 
+			if (student is null)
+				return NotFound<ReturnStudentResponse>("Student Is Not Found");
 			var mappedStudent = mapper.Map<ReturnStudentResponse>(student);
 
 			return Success(mappedStudent);

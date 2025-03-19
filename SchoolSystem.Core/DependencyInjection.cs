@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using SchoolSystem.Core.Features.Students.Behaviors;
 using SchoolSystem.Core.Mapping.Students;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,10 @@ namespace SchoolSystem.Core
 			services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
 			services.AddAutoMapper(typeof(StudentProfile));
+
+			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 			return services;
 		}
