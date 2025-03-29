@@ -33,9 +33,9 @@ namespace SchoolSystem.Core
 				{
 					new CultureInfo("en-US"),
 					new CultureInfo("es-ES"),
-					new CultureInfo("ar-Eg")
+					new CultureInfo("ar-EG")
 				};
-				options.DefaultRequestCulture = new RequestCulture("ar-Eg");
+				options.DefaultRequestCulture = new RequestCulture("ar-EG");
 				options.SupportedCultures = cultures;
 				options.SupportedUICultures = cultures;
 			});

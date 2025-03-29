@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Infrastructure.Configurations
 {
-	internal class DepartmentSubjectConfiguration : IEntityTypeConfiguration<DepartmentSubject>
+	public class DepartmentSubjectConfiguration : IEntityTypeConfiguration<DepartmentSubject>
 	{
 		public void Configure(EntityTypeBuilder<DepartmentSubject> builder)
 		{

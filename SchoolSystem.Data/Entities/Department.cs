@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SchoolSystem.Data.Commons;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolProject.Data.Entities
 {
-	public class Department 
+	public class Department : GeneralLocalizableEntity
 	{
 		[Key]
 
@@ -12,12 +13,14 @@ namespace SchoolProject.Data.Entities
 
 
 		[StringLength(200)]
-		public string? Name { get; set; }
+		public string? NameEn { get; set; }
+		public string? NameAr { get; set; }
+
 
 
 		public int? InsManger { get; set; }
-		
-		
+
+
 		[InverseProperty("Department")]
 		public virtual ICollection<Student> Students { get; set; } = new HashSet<Student>();
 
@@ -25,14 +28,14 @@ namespace SchoolProject.Data.Entities
 		[InverseProperty("Department")]
 		public virtual ICollection<DepartmentSubject> DepartmentSubjects { get; set; } = new HashSet<DepartmentSubject>();
 
-		
+
 		[InverseProperty("department")]
 		public virtual ICollection<Instructor> Instructors { get; set; } = new HashSet<Instructor>();
 
-		
+
 		[ForeignKey("InsManger")]
 		[InverseProperty("departmentManager")]
-		public virtual Instructor? Instructor { get; set; }
+		public virtual Instructor? Manager { get; set; }
 
 	}
 }

@@ -1,16 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SchoolSystem.Data.Commons;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolProject.Data.Entities
 {
-	public class Instructor
+	public class Instructor : GeneralLocalizableEntity
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int InstructorId { get; set; }
 
 
-		public string? Name { get; set; }
+		public string? NameEn { get; set; }
+		public string? NameAr { get; set; }
 
 
 		public string? Address { get; set; }
@@ -37,7 +39,7 @@ namespace SchoolProject.Data.Entities
 
 
 
-		[InverseProperty("Instructor")]
+		[InverseProperty("Manager")]
 		public Department? departmentManager { get; set; }
 
 

@@ -5,7 +5,7 @@ namespace SchoolProject.Data.Entities
 {
 	public class DepartmentSubject
 	{
-		
+
 		public int DepartmentId { get; set; }
 
 
@@ -13,12 +13,12 @@ namespace SchoolProject.Data.Entities
 
 
 		[ForeignKey(nameof(DepartmentId))]
-		[InverseProperty("DepartmentSubjects")]
+		[InverseProperty(nameof(Department.DepartmentSubjects))]
 		public virtual Department? Department { get; set; }
 
 
 		[ForeignKey(nameof(SubjectId))]
-		[InverseProperty("DepartmetsSubjects")]
-		public virtual Subjects? Subject { get; set; }
+		[InverseProperty(nameof(Subject.DepartmetsSubjects))]
+		public virtual Subject? Subject { get; set; }
 	}
 }
