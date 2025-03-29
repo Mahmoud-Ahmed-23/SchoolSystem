@@ -1,10 +1,13 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolSystem.Core.Features.Students.Behaviors;
 using SchoolSystem.Core.Mapping.Students;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -23,6 +26,19 @@ namespace SchoolSystem.Core
 			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+			services.Configure<RequestLocalizationOptions>(options =>
+			{
+				List<CultureInfo> cultures = new List<CultureInfo>
+				{
+					new CultureInfo("en-US"),
+					new CultureInfo("es-ES"),
+					new CultureInfo("ar-Eg")
+				};
+				options.DefaultRequestCulture = new RequestCulture("ar-Eg");
+				options.SupportedCultures = cultures;
+				options.SupportedUICultures = cultures;
+			});
 
 			return services;
 		}

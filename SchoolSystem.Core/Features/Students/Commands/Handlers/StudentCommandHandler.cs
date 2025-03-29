@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Data.Entities;
+using SchoolSystem.Core._SharedResources;
 using SchoolSystem.Core.Bases;
 using SchoolSystem.Core.Features.Students.Commands.Models;
 using SchoolSystem.Core.Features.Students.Results;
@@ -13,56 +15,66 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Core.Features.Students.Commands.Handlers
 {
-	public class StudentCommandHandler(IStudentService studentService, IMapper mapper) :
+	public class StudentCommandHandler :
 		ResponseHandler,
 		IRequestHandler<AddStudentCommand, Response<string>>,
 		IRequestHandler<EditStudentCommand, Response<string>>,
 		IRequestHandler<DeleteStudentCommand, Response<string>>
 	{
+		private readonly IStudentService _studentService;
+		private readonly IMapper _mapper;
+		private readonly IStringLocalizer<SharedResources> _localizer;
+
+		public StudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+		{
+			_studentService = studentService;
+			_mapper = mapper;
+			_localizer = localizer;
+		}
 		public async Task<Response<string>> Handle(AddStudentCommand request, CancellationToken cancellationToken)
 		{
-			var student = mapper.Map<Student>(request);
+			var student = _mapper.Map<Student>(request);
 
-			var result = await studentService.AddStudent(student);
+			var result = await _studentService.AddStudent(student);
 
 			if (result == "Success")
-				return Created("Student is Created");
-			return BadRequest<string>("Student is not Created");
+				return Created(string.Empty);
+			return BadRequest<string>();
 		}
 
 		public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
 		{
-			var student = await studentService.GetStudentById(request.Id);
+			var student = await _studentService.GetStudentById(request.Id);
 
 			if (student is null)
-				return NotFound<string>("Student is not Found");
+				return NotFound<string>();
 
-			var ExistCheck = await studentService.GetNameIfExistExcludeItSelf(request.Name!, request.Id);
+			var ExistCheck = await _studentService.GetNameIfExistExcludeItSelf(request.Name!, request.Id);
 
 			if (ExistCheck)
-				return BadRequest<string>("Name is already used please choose another name");
+				return BadRequest<string>();
 
-			var mappedStudent = mapper.Map(request, student);
+			var mappedStudent = _mapper.Map(request, student);
 
-			var result = await studentService.UpdateStudent(mappedStudent);
+			var result = await _studentService.UpdateStudent(mappedStudent);
 
 			if (result == "Success")
-				return Success($"Update Student {mappedStudent.Name} is Successfully");
-			return BadRequest<string>($"Update Student {mappedStudent.Name} is Failed");
+				return Success("");
+			return BadRequest<string>();
 		}
 
 		public async Task<Response<string>> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
 		{
-			var student = await studentService.GetStudentById(request.Id);
+			var student = await _studentService.GetStudentById(request.Id);
 
 			if (student is null)
-				return NotFound<string>("Student is not Found");
+				return NotFound<string>();
 
-			var result = await studentService.DeleteStudent(student);
+			var result = await _studentService.DeleteStudent(student);
 
 			if (result == "Success")
-				return Deleted<string>($"Delete Student {student.Name} is Successfully");
-			return Deleted<string>($"Delete Student {student.Name} is Failed");
+				return Deleted<string>();
+			return Deleted<string>();
 
 		}
 	}

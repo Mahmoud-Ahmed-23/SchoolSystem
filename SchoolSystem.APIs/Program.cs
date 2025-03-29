@@ -1,4 +1,5 @@
 
+using Microsoft.Extensions.Options;
 using SchoolSystem.APIs.Extensions;
 using SchoolSystem.Core;
 using SchoolSystem.Core.Middlewares;
@@ -24,6 +25,9 @@ namespace SchoolSystem.APIs
 							.AddService_Services()
 							.AddCoreServices();
 
+			builder.Services.AddControllersWithViews();
+			builder.Services.AddLocalization(options => options.ResourcesPath = "");
+
 
 			var app = builder.Build();
 
@@ -35,6 +39,10 @@ namespace SchoolSystem.APIs
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}
+
+			var options = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>();
+
+			app.UseRequestLocalization(options.Value);
 
 			app.UseHttpsRedirection();
 
