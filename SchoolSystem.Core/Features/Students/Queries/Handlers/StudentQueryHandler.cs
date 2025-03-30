@@ -37,7 +37,13 @@ namespace SchoolSystem.Core.Features.Students.Queries.Handlers
 
 			var mappedStudents = _mapper.Map<List<ReturnStudentResponse>>(students);
 
-			return Success(mappedStudents);
+			var result = Success(mappedStudents);
+
+			result.Meta = new
+			{
+				TotalCount = mappedStudents.Count
+			};
+			return result;
 		}
 
 		public async Task<Response<ReturnStudentResponse>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
@@ -48,7 +54,14 @@ namespace SchoolSystem.Core.Features.Students.Queries.Handlers
 				return NotFound<ReturnStudentResponse>();
 			var mappedStudent = _mapper.Map<ReturnStudentResponse>(student);
 
-			return Success(mappedStudent);
+			var result = Success(mappedStudent);
+
+			result.Meta = new
+			{
+				TotalCount = 1
+			};
+
+			return result;
 		}
 	}
 }

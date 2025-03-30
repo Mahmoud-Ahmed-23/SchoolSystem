@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Infrastructure.Abstracts
+namespace SchoolSystem.Infrastructure.Abstracts.Repositories
 {
 	public interface IStudentRepository : IGenericRepository<Student>
 	{

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Core.Features.Students.Queries.Models
 {
-	public class GetStudentListQuery : IRequest<Response<List<ReturnStudentResponse>>>
+	public class GetStudentListQuery : IRequest<Response<List<ReturnStudentResponse>>> 
 	{
 
 	}

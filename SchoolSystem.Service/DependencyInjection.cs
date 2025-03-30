@@ -15,6 +15,7 @@ namespace SchoolSystem.Service
 		{
 			services.AddTransient(typeof(IStudentService), typeof(StudentService));
 
+			services.AddTransient(typeof(IDepartmentService), typeof(DepartmentService));
 
 			return services;
 		}

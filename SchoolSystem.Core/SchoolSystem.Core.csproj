@@ -20,4 +20,8 @@
     <ProjectReference Include="..\SchoolSystem.Service\SchoolSystem.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Departments\Commands\" />
+  </ItemGroup>
+
 </Project>

@@ -21,5 +21,16 @@ namespace SchoolSystem.Data.AppMetaData
 			public const string Edit = prefix + "/Edit";
 			public const string Delete = prefix + "/{id}";
 		}
+
+		public static class DepartmentRouting
+		{
+			public const string prefix = Rule + "department";
+			public const string list = prefix + "/list";
+			public const string id = prefix + "/{id}";
+			public const string add = prefix + "/add";
+			public const string Edit = prefix + "/Edit";
+			public const string Delete = prefix + "/{id}";
+		}
+
 	}
 }
