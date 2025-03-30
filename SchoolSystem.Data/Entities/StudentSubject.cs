@@ -17,14 +17,14 @@ namespace SchoolProject.Data.Entities
 
 
 		[ForeignKey(nameof(StudentId))]
-		[InverseProperty("StudentSubjects")]
+		[InverseProperty(nameof(Student.StudentSubjects))]
 		public virtual Student? Student { get; set; }
 
 
 
 		[ForeignKey(nameof(SubjectId))]
-		[InverseProperty("StudentsSubjects")]
-		public virtual Subjects? Subject { get; set; }
+		[InverseProperty(nameof(Subject.StudentsSubjects))]
+		public virtual Subject? Subject { get; set; }
 
 	}
 }

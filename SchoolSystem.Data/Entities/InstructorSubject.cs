@@ -6,18 +6,18 @@ namespace SchoolProject.Data.Entities
 	public class InstructorSubject
 	{
 		public int InstructorId { get; set; }
-		
+
 
 		public int SubjectId { get; set; }
-		
+
 
 		[ForeignKey(nameof(InstructorId))]
-		[InverseProperty("InstructorSubjects")]
+		[InverseProperty(nameof(Instructor.InstructorSubjects))]
 		public Instructor? instructor { get; set; }
 
 
 		[ForeignKey(nameof(SubjectId))]
-		[InverseProperty("InstructorSubjects")]
-		public Subjects? Subject { get; set; }
+		[InverseProperty(nameof(Subject.InstructorSubjects))]
+		public Subject? Subject { get; set; }
 	}
 }

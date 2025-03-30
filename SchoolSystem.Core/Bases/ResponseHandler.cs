@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Localization;
+using SchoolSystem.Core._SharedResources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +10,13 @@ namespace SchoolSystem.Core.Bases
 {
 	public class ResponseHandler
 	{
+		private readonly IStringLocalizer<SharedResources> _localizer;
 
-
-
-		public Response<T> Deleted<T>(string Message = null)
+		public ResponseHandler(IStringLocalizer<SharedResources> localizer)
+		{
+			_localizer = localizer;
+		}
+		public Response<T> Deleted<T>(string Message = null!)
 		{
 
 
@@ -19,28 +24,28 @@ namespace SchoolSystem.Core.Bases
 			{
 				StatusCode = System.Net.HttpStatusCode.OK,
 				Succeeded = true,
-				Message = Message
+				Message = Message == null ? _localizer[SharedResourcesKeys.Deleted] : Message
 			};
 		}
-		public Response<T> Success<T>(T entity, string message = null, object Meta = null!)
+		public Response<T> Success<T>(T entity, string message = null!, object Meta = null!)
 		{
 			return new Response<T>()
 			{
 				Data = entity,
 				StatusCode = System.Net.HttpStatusCode.OK,
 				Succeeded = true,
-				Message = message,
+				Message = message == null ? _localizer[SharedResourcesKeys.Success] : message,
 				Meta = Meta
 			};
 		}
-		public Response<T> Unauthorized<T>(string Message = null)
+		public Response<T> Unauthorized<T>(string Message = null!)
 		{
 
 			return new Response<T>()
 			{
 				StatusCode = System.Net.HttpStatusCode.Unauthorized,
 				Succeeded = true,
-				Message = Message
+				Message = Message == null ? _localizer[SharedResourcesKeys.Unauthorized] : Message
 			};
 
 		}
@@ -50,7 +55,7 @@ namespace SchoolSystem.Core.Bases
 			{
 				StatusCode = System.Net.HttpStatusCode.BadRequest,
 				Succeeded = false,
-				Message = Message
+				Message = Message == null ? _localizer[SharedResourcesKeys.BadRequest] : Message
 			};
 		}
 		public Response<T> UnprocessableEntity<T>(string Message = null!)
@@ -69,18 +74,18 @@ namespace SchoolSystem.Core.Bases
 			{
 				StatusCode = System.Net.HttpStatusCode.NotFound,
 				Succeeded = false,
-				Message = message
+				Message = message == null ? _localizer[SharedResourcesKeys.NotFound] : message
 			};
 		}
 
-		public Response<T> Created<T>(T entity, string message = null, object Meta = null!)
+		public Response<T> Created<T>(T entity, string message = null!, object Meta = null!)
 		{
 			return new Response<T>()
 			{
 				Data = entity,
 				StatusCode = System.Net.HttpStatusCode.Created,
 				Succeeded = true,
-				Message = message,
+				Message = message == null ? _localizer[SharedResourcesKeys.Created] : message,
 				Meta = Meta
 			};
 		}

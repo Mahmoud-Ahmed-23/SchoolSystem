@@ -15,11 +15,15 @@ namespace SchoolSystem.Core.Mapping.Students
 		public StudentProfile()
 		{
 			CreateMap<Student, ReturnStudentResponse>()
-				.ForMember(dest => dest.DepartmentName, option => option.MapFrom(src => src.Department!.Name));
+				.ForMember(dest => dest.DepartmentName, option => option.MapFrom(src => src.Department!.Localize(src.Department!.NameEn, src.Department!.NameAr)))
+				.ForMember(dest => dest.Name, option => option.MapFrom(src => src.Localize(src.NameEn, src.NameAr)));
 
-			CreateMap<AddStudentCommand, Student>();
+			CreateMap<AddStudentCommand, Student>()
+				.ForMember(dest => dest.NameEn, option => option.MapFrom(src => src.Name));
 
-			CreateMap<EditStudentCommand, Student>();
+			CreateMap<EditStudentCommand, Student>()
+				.ForMember(dest => dest.NameEn, option => option.MapFrom(src => src.Name));
+
 		}
 	}
 }

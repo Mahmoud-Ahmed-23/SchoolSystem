@@ -28,7 +28,7 @@ namespace SchoolSystem.Service.Implementation
 		{
 			var repo = _unitOfWork.GetRepository<Student>();
 
-			var existStudent = repo.GetTableNoTracking().Where(s => s.Name == (student.Name)).FirstOrDefault();
+			var existStudent = repo.GetTableNoTracking().Where(s => s.NameEn == (student.NameEn)).FirstOrDefault();
 
 			if (existStudent is not null)
 				return "Fail";
@@ -70,7 +70,7 @@ namespace SchoolSystem.Service.Implementation
 
 		public async Task<bool> GetNameIfExistExcludeItSelf(string name, int id)
 		{
-			var student = _unitOfWork.GetRepository<Student>().GetTableNoTracking().Where(s => s.Name == name && s.Id != id).FirstOrDefault();
+			var student = _unitOfWork.GetRepository<Student>().GetTableNoTracking().Where(s => s.NameEn == name && s.Id != id).FirstOrDefault();
 
 			if (student is null)
 				return false;
