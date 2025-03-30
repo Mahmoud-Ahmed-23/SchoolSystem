@@ -61,7 +61,7 @@ namespace SchoolSystem.Service.Implementation
 				await trans.CommitAsync();
 				return "Success";
 			}
-			catch 
+			catch
 			{
 				await trans.RollbackAsync();
 				return "Fail";
