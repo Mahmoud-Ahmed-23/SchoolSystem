@@ -29,6 +29,8 @@ namespace SchoolSystem.Infrastructure.UnitOfwork
 
 		public IStudentRepository StudentRepository => _studentRepository.Value;
 
+		public IDepartmentRepository DepartmentRepository => _departmentRepository.Value;
+
 		public async Task<int> CompleteAsync()
 		{
 			return await _dbContext.SaveChangesAsync();
