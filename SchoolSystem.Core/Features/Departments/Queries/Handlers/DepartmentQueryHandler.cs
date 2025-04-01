@@ -16,7 +16,8 @@ namespace SchoolSystem.Core.Features.Departments.Queries.Handlers
 {
 	public class DepartmentQueryHandler :
 		ResponseHandler,
-		IRequestHandler<GetDepartmentListQuery, Response<List<ReturnDepartmentResponse>>>
+		IRequestHandler<GetDepartmentListQuery, Response<List<ReturnDepartmentResponse>>>,
+		IRequestHandler<GetDepartmentByIdQuery, Response<ReturnDepartmentByIdResponse>>
 	{
 		private readonly IDepartmentService _departmentService;
 		private readonly IStringLocalizer<SharedResources> _localizer;
@@ -40,6 +41,25 @@ namespace SchoolSystem.Core.Features.Departments.Queries.Handlers
 			result.Meta = new
 			{
 				TotalCount = mappedDepartments.Count
+			};
+
+			return result;
+		}
+
+		public async Task<Response<ReturnDepartmentByIdResponse>> Handle(GetDepartmentByIdQuery request, CancellationToken cancellationToken)
+		{
+			var department = await _departmentService.GetDepartmentById(request.id);
+
+			if (department == null)
+				return NotFound<ReturnDepartmentByIdResponse>(_localizer[SharedResourcesKeys.NotFound]);
+
+			var mappedDepartment = _mapper.Map<ReturnDepartmentByIdResponse>(department);
+
+			var result = Success(mappedDepartment);
+
+			result.Meta = new
+			{
+				TotalCount = 1
 			};
 
 			return result;

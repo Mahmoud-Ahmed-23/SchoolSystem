@@ -57,19 +57,12 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DepartmentId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectId1")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.HasKey("SubjectId", "DepartmentId");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("DepartmentId1");
-
-                    b.HasIndex("SubjectId1");
 
                     b.ToTable("DepartmentSubjects");
                 });
@@ -123,19 +116,9 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InstructorId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectId1")
-                        .HasColumnType("int");
-
                     b.HasKey("SubjectId", "InstructorId");
 
                     b.HasIndex("InstructorId");
-
-                    b.HasIndex("InstructorId1");
-
-                    b.HasIndex("SubjectId1");
 
                     b.ToTable("InstructorSubject");
                 });
@@ -183,10 +166,7 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectId1")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("grade")
@@ -194,11 +174,7 @@ namespace SchoolSystem.Infrastructure.Migrations
 
                     b.HasKey("StudentId", "SubjectId");
 
-                    b.HasIndex("StudentId1");
-
                     b.HasIndex("SubjectId");
-
-                    b.HasIndex("SubjectId1");
 
                     b.ToTable("StudentSubjects");
                 });
@@ -238,24 +214,16 @@ namespace SchoolSystem.Infrastructure.Migrations
             modelBuilder.Entity("SchoolProject.Data.Entities.DepartmentSubject", b =>
                 {
                     b.HasOne("SchoolProject.Data.Entities.Department", "Department")
-                        .WithMany()
+                        .WithMany("DepartmentSubjects")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolProject.Data.Entities.Department", null)
-                        .WithMany("DepartmentSubjects")
-                        .HasForeignKey("DepartmentId1");
-
                     b.HasOne("SchoolProject.Data.Entities.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("DepartmetsSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SchoolProject.Data.Entities.Subject", null)
-                        .WithMany("DepartmetsSubjects")
-                        .HasForeignKey("SubjectId1");
 
                     b.Navigation("Department");
 
@@ -280,24 +248,16 @@ namespace SchoolSystem.Infrastructure.Migrations
             modelBuilder.Entity("SchoolProject.Data.Entities.InstructorSubject", b =>
                 {
                     b.HasOne("SchoolProject.Data.Entities.Instructor", "instructor")
-                        .WithMany()
+                        .WithMany("InstructorSubjects")
                         .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolProject.Data.Entities.Instructor", null)
-                        .WithMany("InstructorSubjects")
-                        .HasForeignKey("InstructorId1");
-
                     b.HasOne("SchoolProject.Data.Entities.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("InstructorSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SchoolProject.Data.Entities.Subject", null)
-                        .WithMany("InstructorSubjects")
-                        .HasForeignKey("SubjectId1");
 
                     b.Navigation("Subject");
 
@@ -316,24 +276,16 @@ namespace SchoolSystem.Infrastructure.Migrations
             modelBuilder.Entity("SchoolProject.Data.Entities.StudentSubject", b =>
                 {
                     b.HasOne("SchoolProject.Data.Entities.Student", "Student")
-                        .WithMany()
+                        .WithMany("StudentSubjects")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolProject.Data.Entities.Student", null)
-                        .WithMany("StudentSubjects")
-                        .HasForeignKey("StudentId1");
-
                     b.HasOne("SchoolProject.Data.Entities.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("StudentsSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SchoolProject.Data.Entities.Subject", null)
-                        .WithMany("StudentsSubjects")
-                        .HasForeignKey("SubjectId1");
 
                     b.Navigation("Student");
 

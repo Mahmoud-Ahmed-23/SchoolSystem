@@ -5,20 +5,13 @@ namespace SchoolProject.Data.Entities
 {
 	public class DepartmentSubject
 	{
-
+		[Key]
+		public int Id { get; set; }
 		public int DepartmentId { get; set; }
-
-
 		public int SubjectId { get; set; }
 
-
-		[ForeignKey(nameof(DepartmentId))]
-		[InverseProperty(nameof(Department.DepartmentSubjects))]
 		public virtual Department? Department { get; set; }
 
-
-		[ForeignKey(nameof(SubjectId))]
-		[InverseProperty(nameof(Subject.DepartmetsSubjects))]
 		public virtual Subject? Subject { get; set; }
 	}
 }
