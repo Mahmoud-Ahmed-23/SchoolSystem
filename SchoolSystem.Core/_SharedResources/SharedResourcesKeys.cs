@@ -17,5 +17,7 @@ namespace SchoolSystem.Core._SharedResources
 		public const string Required = "Required";
 		public const string NotEmpty = "NotEmpty"; 
 		public const string Updated = "Updated";
+		public const string EmailAlreadyExist = "EmailAlreadyExist";
+		public const string PhoneAlreadyExist = "PhoneAlreadyExist";
 	}
 }
