@@ -17,5 +17,12 @@ namespace SchoolSystem.APIs.Controllers.Departments
 			return NewResult(result);
 		}
 
+		[HttpGet(Router.DepartmentRouting.id)]
+		public async Task<ActionResult<ReturnDepartmentByIdResponse>> GetDepartmentById([FromRoute] int id)
+		{
+			var result = await mediator.Send(new GetDepartmentByIdQuery(id));
+			return NewResult(result);
+		}
+
 	}
 }

@@ -22,15 +22,15 @@ namespace SchoolSystem.Core.Features.Students.Commands.Validators
 
 		public void ApplyValidationRules()
 		{
-			RuleFor(e => e.Name).NotEmpty().WithMessage(_localizer[SharedResourcesKeys.NotEmpty])
+			RuleFor(e => e.Name).NotEmpty().WithMessage(_localizer[SharedResourcesKeys.Required])
 							   .NotNull().WithMessage("Name Must not Be Null")
 							   .MaximumLength(100).WithMessage("Max Length is 10");
 
-			RuleFor(e => e.Address).NotEmpty().WithMessage(_localizer[SharedResourcesKeys.NotEmpty])
+			RuleFor(e => e.Address).NotEmpty().WithMessage(_localizer[SharedResourcesKeys.Required])
 							  .NotNull().WithMessage("{PropertyValue} Must not Be Null")
 							  .MaximumLength(100).WithMessage("{PropertyName} Length is 10");
 
-			RuleFor(e => e.DepartmentId).NotEmpty().WithMessage(_localizer[SharedResourcesKeys.NotEmpty])
+			RuleFor(e => e.DepartmentId).NotEmpty().WithMessage(_localizer[SharedResourcesKeys.Required])
 										.NotNull().WithMessage("Department Must Not Null , Must Be Requerd");
 		}
 	}

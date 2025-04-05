@@ -20,7 +20,7 @@ namespace SchoolSystem.Service.Implementation
 
 		public async Task<Department> GetDepartmentById(int id)
 		{
-			return await _unitOfWork.DepartmentRepository.GetByIdAsync(id);
+			return await _unitOfWork.DepartmentRepository.GetDepartmentById(id);
 		}
 		public async Task<string> AddDepartment(Department department)
 		{

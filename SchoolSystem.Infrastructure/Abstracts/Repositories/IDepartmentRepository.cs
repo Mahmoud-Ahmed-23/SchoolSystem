@@ -13,5 +13,6 @@ namespace SchoolSystem.Infrastructure.Abstracts.Repositories
 		Task<List<Department>> GetAllDepartments();
 		Task<bool> IsNameExist(Department department);
 		Task<bool> IsNameExistExcludeSelf(Department department);
+		Task<Department> GetDepartmentById(int id);
 	}
 }

@@ -24,9 +24,9 @@ namespace SchoolSystem.Infrastructure.Configurations
 				.WithOne(e => e.Department)
 				.HasForeignKey(e => e.DepartmentId);
 
-			builder.HasMany(e => e.DepartmentSubjects)
-				.WithOne(e => e.Department)
-				.HasForeignKey(e => e.DepartmentId);
+			//builder.HasMany(e => e.DepartmentSubjects)
+			//	.WithOne(e => e.Department)
+			//	.HasForeignKey(e => e.DepartmentId);
 
 			builder.HasMany(e => e.Instructors)
 				.WithOne(e => e.department)

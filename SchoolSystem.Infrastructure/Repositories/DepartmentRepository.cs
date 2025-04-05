@@ -20,7 +20,15 @@ namespace SchoolSystem.Infrastructure.Repositories
 		{
 			_dbContext = dbContext;
 		}
-
+		public async Task<Department> GetDepartmentById(int id)
+		{
+			return await _dbContext.Departments
+									.Where(d => d.Id == id)
+									.Include(d => d.Manager)
+									.Include(d => d.DepartmentSubjects).ThenInclude(ds => ds.Subject)
+									.Include(d => d.Instructors)
+									.Include(d => d.Students).FirstOrDefaultAsync();
+		}
 		public async Task<List<Department>> GetAllDepartments()
 			=> await _dbContext.Departments.Include(d => d.Manager).ToListAsync();
 

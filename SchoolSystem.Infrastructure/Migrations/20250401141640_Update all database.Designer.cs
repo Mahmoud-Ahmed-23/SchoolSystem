@@ -10,16 +10,16 @@ using SchoolSystem.Infrastructure.DbContexts;
 
 namespace SchoolSystem.Infrastructure.Migrations
 {
-	[DbContext(typeof(SchoolDbContext))]
-    [Migration("20250303230458_Add Entities and Dbcontext")]
-    partial class AddEntitiesandDbcontext
+    [DbContext(typeof(SchoolDbContext))]
+    [Migration("20250401141640_Update all database")]
+    partial class Updatealldatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -35,7 +35,11 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int?>("InsManger")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameAr")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("NameEn")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -56,19 +60,12 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DepartmentId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectsId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.HasKey("SubjectId", "DepartmentId");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("DepartmentId1");
-
-                    b.HasIndex("SubjectsId");
 
                     b.ToTable("DepartmentSubjects");
                 });
@@ -90,7 +87,10 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Position")
@@ -119,19 +119,9 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InstructorId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectsId")
-                        .HasColumnType("int");
-
                     b.HasKey("SubjectId", "InstructorId");
 
                     b.HasIndex("InstructorId");
-
-                    b.HasIndex("InstructorId1");
-
-                    b.HasIndex("SubjectsId");
 
                     b.ToTable("InstructorSubject");
                 });
@@ -145,14 +135,20 @@ namespace SchoolSystem.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameAr")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(500)
@@ -173,10 +169,7 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectsId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("grade")
@@ -184,16 +177,12 @@ namespace SchoolSystem.Infrastructure.Migrations
 
                     b.HasKey("StudentId", "SubjectId");
 
-                    b.HasIndex("StudentId1");
-
                     b.HasIndex("SubjectId");
-
-                    b.HasIndex("SubjectsId");
 
                     b.ToTable("StudentSubjects");
                 });
 
-            modelBuilder.Entity("SchoolProject.Data.Entities.Subjects", b =>
+            modelBuilder.Entity("SchoolProject.Data.Entities.Subject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,7 +190,10 @@ namespace SchoolSystem.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -215,34 +207,26 @@ namespace SchoolSystem.Infrastructure.Migrations
 
             modelBuilder.Entity("SchoolProject.Data.Entities.Department", b =>
                 {
-                    b.HasOne("SchoolProject.Data.Entities.Instructor", "Instructor")
+                    b.HasOne("SchoolProject.Data.Entities.Instructor", "Manager")
                         .WithOne("departmentManager")
                         .HasForeignKey("SchoolProject.Data.Entities.Department", "InsManger");
 
-                    b.Navigation("Instructor");
+                    b.Navigation("Manager");
                 });
 
             modelBuilder.Entity("SchoolProject.Data.Entities.DepartmentSubject", b =>
                 {
                     b.HasOne("SchoolProject.Data.Entities.Department", "Department")
-                        .WithMany()
+                        .WithMany("DepartmentSubjects")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolProject.Data.Entities.Department", null)
-                        .WithMany("DepartmentSubjects")
-                        .HasForeignKey("DepartmentId1");
-
-                    b.HasOne("SchoolProject.Data.Entities.Subjects", "Subject")
-                        .WithMany()
+                    b.HasOne("SchoolProject.Data.Entities.Subject", "Subject")
+                        .WithMany("DepartmetsSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SchoolProject.Data.Entities.Subjects", null)
-                        .WithMany("DepartmetsSubjects")
-                        .HasForeignKey("SubjectsId");
 
                     b.Navigation("Department");
 
@@ -256,7 +240,7 @@ namespace SchoolSystem.Infrastructure.Migrations
                         .HasForeignKey("DepartmentId");
 
                     b.HasOne("SchoolProject.Data.Entities.Instructor", "Supervisor")
-                        .WithMany("Instructors")
+                        .WithMany()
                         .HasForeignKey("SupervisorId");
 
                     b.Navigation("Supervisor");
@@ -267,24 +251,16 @@ namespace SchoolSystem.Infrastructure.Migrations
             modelBuilder.Entity("SchoolProject.Data.Entities.InstructorSubject", b =>
                 {
                     b.HasOne("SchoolProject.Data.Entities.Instructor", "instructor")
-                        .WithMany()
+                        .WithMany("InstructorSubjects")
                         .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolProject.Data.Entities.Instructor", null)
+                    b.HasOne("SchoolProject.Data.Entities.Subject", "Subject")
                         .WithMany("InstructorSubjects")
-                        .HasForeignKey("InstructorId1");
-
-                    b.HasOne("SchoolProject.Data.Entities.Subjects", "Subject")
-                        .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SchoolProject.Data.Entities.Subjects", null)
-                        .WithMany("InstructorSubjects")
-                        .HasForeignKey("SubjectsId");
 
                     b.Navigation("Subject");
 
@@ -303,24 +279,16 @@ namespace SchoolSystem.Infrastructure.Migrations
             modelBuilder.Entity("SchoolProject.Data.Entities.StudentSubject", b =>
                 {
                     b.HasOne("SchoolProject.Data.Entities.Student", "Student")
-                        .WithMany()
+                        .WithMany("StudentSubjects")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolProject.Data.Entities.Student", null)
-                        .WithMany("StudentSubjects")
-                        .HasForeignKey("StudentId1");
-
-                    b.HasOne("SchoolProject.Data.Entities.Subjects", "Subject")
-                        .WithMany()
+                    b.HasOne("SchoolProject.Data.Entities.Subject", "Subject")
+                        .WithMany("StudentsSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SchoolProject.Data.Entities.Subjects", null)
-                        .WithMany("StudentsSubjects")
-                        .HasForeignKey("SubjectsId");
 
                     b.Navigation("Student");
 
@@ -340,8 +308,6 @@ namespace SchoolSystem.Infrastructure.Migrations
                 {
                     b.Navigation("InstructorSubjects");
 
-                    b.Navigation("Instructors");
-
                     b.Navigation("departmentManager");
                 });
 
@@ -350,7 +316,7 @@ namespace SchoolSystem.Infrastructure.Migrations
                     b.Navigation("StudentSubjects");
                 });
 
-            modelBuilder.Entity("SchoolProject.Data.Entities.Subjects", b =>
+            modelBuilder.Entity("SchoolProject.Data.Entities.Subject", b =>
                 {
                     b.Navigation("DepartmetsSubjects");
 

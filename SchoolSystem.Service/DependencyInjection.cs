@@ -17,6 +17,8 @@ namespace SchoolSystem.Service
 
 			services.AddTransient(typeof(IDepartmentService), typeof(DepartmentService));
 
+			services.AddTransient(typeof(IAuthService), typeof(AuthService));
+
 			return services;
 		}
 	}

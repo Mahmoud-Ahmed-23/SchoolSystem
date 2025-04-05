@@ -1,21 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using SchoolSystem.Data.Entities.Identity;
 namespace SchoolSystem.Infrastructure.DbContexts
 {
-	public class SchoolDbContext : DbContext
+	public class SchoolDbContext : IdentityDbContext<ApplicationUser>
 	{
 		public SchoolDbContext(DbContextOptions<SchoolDbContext> options)
 			: base(options)
 		{
 
 		}
-
+	
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);

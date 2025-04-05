@@ -14,11 +14,11 @@ namespace SchoolSystem.Infrastructure.Configurations
 		public void Configure(EntityTypeBuilder<StudentSubject> builder)
 		{
 			builder.HasOne(ss => ss.Student)
-				.WithMany()
+				.WithMany(s => s.StudentSubjects)
 				.HasForeignKey(ss => ss.StudentId);
 
 			builder.HasOne(ss => ss.Subject)
-				.WithMany()
+				.WithMany(s => s.StudentsSubjects)
 				.HasForeignKey(ss => ss.SubjectId);
 
 			builder.HasKey(x => new { x.StudentId, x.SubjectId });

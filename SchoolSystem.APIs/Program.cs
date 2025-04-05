@@ -5,6 +5,7 @@ using SchoolSystem.Core;
 using SchoolSystem.Core.Middlewares;
 using SchoolSystem.Infrastructure;
 using SchoolSystem.Service;
+using SchoolSystem.APIs.Extensions;
 
 namespace SchoolSystem.APIs
 {
@@ -23,7 +24,9 @@ namespace SchoolSystem.APIs
 
 			builder.Services.AddInfrastructureServices(builder.Configuration)
 							.AddService_Services()
-							.AddCoreServices();
+							.AddCoreServices()
+							.AddIdentityServices(builder.Configuration);
+
 
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddLocalization(options => options.ResourcesPath = "");
@@ -48,6 +51,7 @@ namespace SchoolSystem.APIs
 
 			app.UseAuthorization();
 
+			app.UseStaticFiles();
 
 			app.MapControllers();
 
