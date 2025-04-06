@@ -13,5 +13,9 @@ namespace SchoolSystem.Service._Common
 		public static string Success = "Success";
 		public static string Unauthorized = "Unauthorized";
 		public static string Exist = "Exist";
+		public static string InvalidPassword = "InvalidPassword";
+		public static string LockedOut = "LockedOut";
+		public static string NotAllowed = "NotAllowed";
+		public static string EmailNotConfirmed = "EmailNotConfirmed";
 	}
 }

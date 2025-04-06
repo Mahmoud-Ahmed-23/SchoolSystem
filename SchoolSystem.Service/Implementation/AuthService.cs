@@ -1,17 +1,21 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SchoolSystem.Data.Entities.Identity;
+using SchoolSystem.Data.Helpers;
 using SchoolSystem.Service._Common;
 using SchoolSystem.Service.Abstracts;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolSystem.Service.Implementation
 {
-	internal class AuthService(UserManager<ApplicationUser> _userManager) : IAuthService
+	internal class AuthService(UserManager<ApplicationUser> _userManager,JwtSettings _jwtSettings) : IAuthService
 	{
 
 
@@ -107,5 +111,7 @@ namespace SchoolSystem.Service.Implementation
 				return string.Join(", ", errors);
 			}
 		}
+
+		
 	}
 }
