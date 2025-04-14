@@ -132,6 +132,18 @@
   <data name="EmailAlreadyExist" xml:space="preserve">
     <value>Email is Already Exist</value>
   </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>Email is Not Confirmed</value>
+  </data>
+  <data name="EmailNotFound" xml:space="preserve">
+    <value>Email is Not Found</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid Password</value>
+  </data>
+  <data name="LockedOut" xml:space="preserve">
+    <value>Email is Locked Out</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -146,6 +158,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
+  </data>
+  <data name="RoleAlreadyExist" xml:space="preserve">
+    <value>New Role Name Is Already Exists</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Operation Successfully</value>

@@ -44,7 +44,7 @@ namespace SchoolSystem.Core.Features.Accounts.Commands.Handlers
 		public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
 		{
 			var user = _mapper.Map<ApplicationUser>(request);
-			var result = await _authService.AddUserAsync(user, request.Password);
+			var result = await _authService.AddUserAsync(user, request.Role, request.Password);
 			if (result == Status.Success)
 				return Created(result, _localizer[SharedResourcesKeys.Success]);
 

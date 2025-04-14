@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolProject.Data.Entities;
 using SchoolSystem.APIs.Bases;
@@ -15,7 +16,7 @@ namespace SchoolSystem.APIs.Controllers.Students
 	{
 
 
-
+		[Authorize]
 		[HttpGet(Router.StudentRouting.list)]
 		public async Task<ActionResult<List<ReturnStudentResponse>>> GetStudentList()
 		{

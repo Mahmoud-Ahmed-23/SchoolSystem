@@ -42,15 +42,32 @@ namespace SchoolSystem.Data.AppMetaData
 			public const string Delete = prefix + "/{id}";
 			public const string ChangePassword = prefix + "/ChangePassword";
 		}
-		
+
 		public static class Dashboard
 		{
 			public const string prefix = Rule + "Dashboard";
+
+			public const string register = prefix + "/register";
+
+
+			public const string GetUserid = prefix + "/User/{id}";
+			public const string EditUser = prefix + "/EditUser";
+			public const string DeleteUser = prefix + "/DeleteUser/{id}";
+
+			public const string AddRole = prefix + "/AddRole";
+			public const string Roleslist = prefix + "/Roleslist";
+			public const string EditRole = prefix + "/EditRole";
+			public const string DeleteRole = prefix + "/DeleteRole";
+		}
+		public static class AuthenticationRouting
+		{
+			public const string prefix = Rule + "Authentication";
 			public const string list = prefix + "/list";
 			public const string id = prefix + "/{id}";
 			public const string register = prefix + "/register";
 			public const string Edit = prefix + "/Edit";
 			public const string Delete = prefix + "/{id}";
+			public const string SignIn = prefix + "/SignIn";
 		}
 
 	}

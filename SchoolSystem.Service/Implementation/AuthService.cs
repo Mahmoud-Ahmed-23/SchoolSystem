@@ -1,23 +1,28 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SchoolSystem.Data.Entities.Identity;
+using SchoolSystem.Data.Helpers;
 using SchoolSystem.Service._Common;
 using SchoolSystem.Service.Abstracts;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolSystem.Service.Implementation
 {
-	internal class AuthService(UserManager<ApplicationUser> _userManager) : IAuthService
+	internal class AuthService(UserManager<ApplicationUser> _userManager, JwtSettings _jwtSettings)
+		: IAuthService
 	{
 
 
 
 
-		public async Task<string> AddUserAsync(ApplicationUser user, string password)
+		public async Task<string> AddUserAsync(ApplicationUser user, string roleName, string password)
 		{
 			var findUser = await _userManager.FindByEmailAsync(user.Email!);
 
@@ -29,12 +34,16 @@ namespace SchoolSystem.Service.Implementation
 			var result = await _userManager.CreateAsync(user, password);
 
 			if (result.Succeeded)
+			{
+				await _userManager.AddToRoleAsync(user, roleName);
 				return Status.Success;
+			}
 			else
 			{
 				var errors = result.Errors.Select(e => e.Description).ToList();
 				return string.Join(", ", errors);
 			}
+
 		}
 
 
@@ -107,5 +116,7 @@ namespace SchoolSystem.Service.Implementation
 				return string.Join(", ", errors);
 			}
 		}
+
+
 	}
 }

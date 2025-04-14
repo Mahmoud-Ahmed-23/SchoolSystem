@@ -9,7 +9,7 @@ namespace SchoolSystem.Service.Abstracts
 {
 	public interface IAuthService
 	{
-		Task<string> AddUserAsync(ApplicationUser user, string password);
+		Task<string> AddUserAsync(ApplicationUser user, string roleName, string password);
 		Task<ApplicationUser> GetUserByIdAsync(string id);
 		Task<string> DeleteUserAsync(string id);
 		Task<string> ChangePasswordAsync(string id, string oldPassword, string newPassword);

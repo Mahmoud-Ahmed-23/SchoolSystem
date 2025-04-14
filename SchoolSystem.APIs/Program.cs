@@ -6,6 +6,7 @@ using SchoolSystem.Core.Middlewares;
 using SchoolSystem.Infrastructure;
 using SchoolSystem.Service;
 using SchoolSystem.APIs.Extensions;
+using Microsoft.AspNetCore.Builder;
 
 namespace SchoolSystem.APIs
 {
@@ -23,7 +24,7 @@ namespace SchoolSystem.APIs
 			builder.Services.AddSwaggerGen();
 
 			builder.Services.AddInfrastructureServices(builder.Configuration)
-							.AddService_Services()
+							.AddApplicationServices(builder.Configuration)
 							.AddCoreServices()
 							.AddIdentityServices(builder.Configuration);
 
@@ -48,6 +49,8 @@ namespace SchoolSystem.APIs
 			app.UseRequestLocalization(options.Value);
 
 			app.UseHttpsRedirection();
+
+			app.UseAuthentication();
 
 			app.UseAuthorization();
 
