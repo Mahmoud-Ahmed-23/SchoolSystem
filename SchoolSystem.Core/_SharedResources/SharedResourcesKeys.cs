@@ -23,6 +23,7 @@ namespace SchoolSystem.Core._SharedResources
 		public const string InvalidPassword = "InvalidPassword";
 		public const string EmailNotConfirmed = "EmailNotConfirmed";
 		public const string EmailNotFound = "EmailNotFound";
+		public const string RoleAlreadyExist = "RoleAlreadyExist";
 		
 	}
 }

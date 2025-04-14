@@ -159,6 +159,9 @@
   <data name="Required" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
   </data>
+  <data name="RoleAlreadyExist" xml:space="preserve">
+    <value>اسم الدور الجديد موجود بالفعل</value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>تمت العملية بنجاح</value>
   </data>

@@ -16,16 +16,16 @@ namespace SchoolSystem.Core.Features.Accounts.Commands.Models
 		public string? PhoneNumber { get; set; }
 		public string? Address { get; set; }
 
-		//public string Role { get; set; }
+		public string Role { get; set; }
 
-		public AddUserCommand(string fullName, string password, string email, string? phoneNumber, string? address/*, string role*/)
+		public AddUserCommand(string fullName, string password, string email, string? phoneNumber, string? address/*, string role*/, string role)
 		{
 			FullName = fullName;
 			Password = password;
 			Email = email;
 			PhoneNumber = phoneNumber;
 			Address = address;
-			//Role = role;
+			Role = role;
 		}
 	}
 }

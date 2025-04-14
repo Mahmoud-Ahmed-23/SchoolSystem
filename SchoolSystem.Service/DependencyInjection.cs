@@ -24,6 +24,8 @@ namespace SchoolSystem.Service
 
 			services.AddTransient(typeof(IAuthenticationService), typeof(AuthenticationService));
 
+			services.AddTransient(typeof(IAuthorizationService), typeof(AuthorizationService));
+
 			var JwtSettings = new JwtSettings();
 
 			configuration.GetSection(nameof(JwtSettings)).Bind(JwtSettings);

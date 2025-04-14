@@ -24,6 +24,7 @@
     <Folder Include="Features\Authentication\Commands\Validators\" />
     <Folder Include="Features\Authentication\Results\" />
     <Folder Include="Features\Authentication\Queries\" />
+    <Folder Include="Features\Authorization\Results\" />
     <Folder Include="Features\Departments\Commands\" />
   </ItemGroup>
 

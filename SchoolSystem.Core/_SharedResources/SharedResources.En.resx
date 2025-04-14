@@ -159,6 +159,9 @@
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
   </data>
+  <data name="RoleAlreadyExist" xml:space="preserve">
+    <value>New Role Name Is Already Exists</value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>Operation Successfully</value>
   </data>
