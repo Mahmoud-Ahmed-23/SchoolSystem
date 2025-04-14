@@ -132,14 +132,26 @@
   <data name="EmailAlreadyExist" xml:space="preserve">
     <value>Email is Already Exist</value>
   </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>Email Has Been Confirmed Successfully</value>
+  </data>
   <data name="EmailNotConfirmed" xml:space="preserve">
     <value>Email is Not Confirmed</value>
   </data>
   <data name="EmailNotFound" xml:space="preserve">
     <value>Email is Not Found</value>
   </data>
+  <data name="EmailNotSent" xml:space="preserve">
+    <value>Something Went Wrong While Sending Reset Code</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value>We Have Sent You The Reset Code</value>
+  </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>Invalid Password</value>
+  </data>
+  <data name="InvalidResetCode" xml:space="preserve">
+    <value>The Provided Code Is Invalid</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
     <value>Email is Locked Out</value>
@@ -158,6 +170,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
+  </data>
+  <data name="ResetCodeExpired" xml:space="preserve">
+    <value>The Provided Code Has Been Expired</value>
   </data>
   <data name="RoleAlreadyExist" xml:space="preserve">
     <value>New Role Name Is Already Exists</value>

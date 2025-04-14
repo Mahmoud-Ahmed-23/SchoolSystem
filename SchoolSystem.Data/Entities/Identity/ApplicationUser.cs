@@ -8,5 +8,8 @@ namespace SchoolSystem.Data.Entities.Identity
 
 		public string? Address { get; set; }
 
+		public int? EmailConfirmResetCode { get; set; }
+		public DateTime? EmailConfirmResetCodeExpiry { get; set; }
+
 	}
 }

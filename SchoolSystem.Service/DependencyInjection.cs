@@ -1,8 +1,10 @@
 ﻿
+using MailKit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolSystem.Data.Helpers;
 using SchoolSystem.Service.Abstracts;
+using SchoolSystem.Service.Abstracts.SendEmail;
 using SchoolSystem.Service.Implementation;
 using System;
 using System.Collections.Generic;
@@ -25,6 +27,10 @@ namespace SchoolSystem.Service
 			services.AddTransient(typeof(IAuthenticationService), typeof(AuthenticationService));
 
 			services.AddTransient(typeof(IAuthorizationService), typeof(AuthorizationService));
+
+			services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+
+			services.AddTransient(typeof(IEmailService), typeof(EmailService));
 
 			var JwtSettings = new JwtSettings();
 
