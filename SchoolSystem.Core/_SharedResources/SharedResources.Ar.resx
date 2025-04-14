@@ -132,14 +132,26 @@
   <data name="EmailAlreadyExist" xml:space="preserve">
     <value>الايميل موجود بالفعل</value>
   </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>تم تفعيل الايميل بنجاح</value>
+  </data>
   <data name="EmailNotConfirmed" xml:space="preserve">
     <value>الايميل لم يتم تفعيله</value>
   </data>
   <data name="EmailNotFound" xml:space="preserve">
     <value>الايميل غير موجود</value>
   </data>
+  <data name="EmailNotSent" xml:space="preserve">
+    <value>حدث خطأ ما اثناء ارسال الكود</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value>لقد ارسلنا لك الكود </value>
+  </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>الرقم السرى خطأ</value>
+  </data>
+  <data name="InvalidResetCode" xml:space="preserve">
+    <value>الكود غير صحيح</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
     <value>الايميل تم غلقه</value>
@@ -158,6 +170,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="ResetCodeExpired" xml:space="preserve">
+    <value>الكود انتهت صلاحيته</value>
   </data>
   <data name="RoleAlreadyExist" xml:space="preserve">
     <value>اسم الدور الجديد موجود بالفعل</value>

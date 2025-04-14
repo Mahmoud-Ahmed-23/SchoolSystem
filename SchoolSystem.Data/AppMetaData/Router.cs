@@ -41,6 +41,10 @@ namespace SchoolSystem.Data.AppMetaData
 			public const string Edit = prefix + "/Edit";
 			public const string Delete = prefix + "/{id}";
 			public const string ChangePassword = prefix + "/ChangePassword";
+			public const string SendCode = prefix + "/SendCode";
+			public const string VerfiyCode = prefix + "/VerfiyCode";
+			public const string ResetPassword = prefix + "/ResetPassword";
+			public const string EmailConfirmation = prefix + "/EmailConfirmation";
 		}
 
 		public static class Dashboard
