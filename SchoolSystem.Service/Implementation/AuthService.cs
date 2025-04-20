@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Service.Implementation
 {
-	internal class AuthService(UserManager<ApplicationUser> _userManager, JwtSettings _jwtSettings)
+	internal class AuthService(UserManager<ApplicationUser> _userManager)
 		: IAuthService
 	{
 
