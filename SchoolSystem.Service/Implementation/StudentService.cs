@@ -1,5 +1,8 @@
 ﻿using SchoolProject.Data.Entities;
 using SchoolSystem.Infrastructure.Abstracts;
+using SchoolSystem.Infrastructure.Specifications._SpecParams;
+using SchoolSystem.Infrastructure.Specifications._SpecParams.Students;
+using SchoolSystem.Infrastructure.Specifications.Students;
 using SchoolSystem.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -75,6 +78,19 @@ namespace SchoolSystem.Service.Implementation
 			if (student is null)
 				return false;
 			else return true;
+		}
+
+		public async Task<Pagination<Student>> GetPaginatedStudentsList(StudentSpecParams specParams)
+		{
+			var spec = new StudentWithDepartmentSpecifications(specParams.Sort, specParams.DepartmentId, specParams.PageIndex, specParams.PageSize, specParams.Search);
+
+			var countSpec = new StudentSpecForCountSpecifications(specParams.DepartmentId, specParams.Search);
+
+			var count = await _unitOfWork.GetRepository<Student>().GetCountAsync(countSpec);
+
+			var students = await _unitOfWork.GetRepository<Student>().GetAllWithSpecAsync(spec);
+
+			return new Pagination<Student>(specParams.PageIndex, specParams.PageSize, count) { Data = students };
 		}
 	}
 }

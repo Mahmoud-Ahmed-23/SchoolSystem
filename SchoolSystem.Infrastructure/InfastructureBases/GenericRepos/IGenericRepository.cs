@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using SchoolSystem.Infrastructure.Abstracts.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Infrastructure.InfastructureBases.GenericRepos
 {
-	public interface IGenericRepository<T> where T : class
+	public interface IGenericRepository<TEntity> where TEntity : class
 	{
-		Task DeleteRangeAsync(ICollection<T> entities);
-		Task<T> GetByIdAsync(int id);
+		Task DeleteRangeAsync(ICollection<TEntity> entities);
+		Task<TEntity> GetByIdAsync(int id);
 		IDbContextTransaction BeginTransaction();
 		void Commit();
 		void RollBack();
-		IQueryable<T> GetTableNoTracking();
-		IQueryable<T> GetTableAsTracking();
-		Task<T> AddAsync(T entity);
-		Task AddRangeAsync(ICollection<T> entities);
-		Task UpdateAsync(T entity);
-		Task UpdateRangeAsync(ICollection<T> entities);
-		Task DeleteAsync(T entity);
+		IQueryable<TEntity> GetTableNoTracking();
+		IQueryable<TEntity> GetTableAsTracking();
+		Task<IEnumerable<TEntity>> GetAllWithSpecAsync(ISpecifications<TEntity> specifications);
+		Task<int> GetCountAsync(ISpecifications<TEntity> spec);
+		Task<TEntity> AddAsync(TEntity entity);
+		Task AddRangeAsync(ICollection<TEntity> entities);
+		Task UpdateAsync(TEntity entity);
+		Task UpdateRangeAsync(ICollection<TEntity> entities);
+		Task DeleteAsync(TEntity entity);
 	}
 }

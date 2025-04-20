@@ -7,6 +7,8 @@ using SchoolSystem.Core.Features.Students.Commands.Models;
 using SchoolSystem.Core.Features.Students.Queries.Models;
 using SchoolSystem.Core.Features.Students.Results;
 using SchoolSystem.Data.AppMetaData;
+using SchoolSystem.Infrastructure.Specifications._SpecParams;
+using SchoolSystem.Infrastructure.Specifications._SpecParams.Students;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,6 +23,13 @@ namespace SchoolSystem.APIs.Controllers.Students
 		public async Task<ActionResult<List<ReturnStudentResponse>>> GetStudentList()
 		{
 			var result = await mediator.Send(new GetStudentListQuery());
+			return NewResult(result);
+		}
+
+		[HttpGet(Router.StudentRouting.PaginatedList)]
+		public async Task<ActionResult<Pagination<ReturnStudentResponse>>> GetStudentList([FromQuery] StudentSpecParams specParams)
+		{
+			var result = await mediator.Send(new GetPaginatedStudentListQuery(specParams));
 			return NewResult(result);
 		}
 

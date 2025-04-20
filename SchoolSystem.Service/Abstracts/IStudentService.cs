@@ -1,4 +1,6 @@
 ﻿using SchoolProject.Data.Entities;
+using SchoolSystem.Infrastructure.Specifications._SpecParams;
+using SchoolSystem.Infrastructure.Specifications._SpecParams.Students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,8 @@ namespace SchoolSystem.Service.Abstracts
 		Task<string> DeleteStudent(Student student);
 
 		Task<bool> GetNameIfExistExcludeItSelf(string name, int id);
+
+		Task<Pagination<Student>> GetPaginatedStudentsList(StudentSpecParams specParams);
 
 	}
 }

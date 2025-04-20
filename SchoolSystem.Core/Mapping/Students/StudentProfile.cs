@@ -2,6 +2,7 @@
 using SchoolProject.Data.Entities;
 using SchoolSystem.Core.Features.Students.Commands.Models;
 using SchoolSystem.Core.Features.Students.Results;
+using SchoolSystem.Infrastructure.Specifications._SpecParams;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace SchoolSystem.Core.Mapping.Students
 
 			CreateMap<EditStudentCommand, Student>()
 				.ForMember(dest => dest.NameEn, option => option.MapFrom(src => src.Name));
+
+			CreateMap<Pagination<Student>, Pagination<ReturnStudentResponse>>();
 
 		}
 	}
