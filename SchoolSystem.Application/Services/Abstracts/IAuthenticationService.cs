@@ -1,4 +1,5 @@
-﻿using SchoolSystem.Core.Entities.Identity;
+﻿using SchoolSystem.Application.Dtos;
+using SchoolSystem.Core.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace SchoolSystem.Application.Services.Abstracts
 	public interface IAuthenticationService
 	{
 		Task<string> GenerateTokenAsync(ApplicationUser user);
-		Task<string> SignInAsync(string email, string password);
+		Task<UserDto> SignInAsync(string email, string password);
+
+		Task<UserDto> GetRefreshToken(RefreshDto refreshDto);
+		Task<bool> RevokeRefreshToken(RefreshDto refreshDto);
 	}
 }

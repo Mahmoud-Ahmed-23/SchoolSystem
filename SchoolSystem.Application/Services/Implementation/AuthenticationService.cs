@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SchoolSystem.Application.Services._Common;
 using SchoolSystem.Application.Services.Abstracts;
+using SchoolSystem.Application.Dtos;
+using Newtonsoft.Json.Linq;
 
 namespace SchoolSystem.Application.Services.Implementation
 {
@@ -53,45 +55,210 @@ namespace SchoolSystem.Application.Services.Implementation
 			return new JwtSecurityTokenHandler().WriteToken(token);
 		}
 
-		//private RefreshToken GenerateRefreshToken()
-		//{
-		//	var randomNumber = new byte[32];
+		private RefreshToken GenerateRefreshToken()
+		{
+			var randomNumber = new byte[32];
 
-		//	var generator = RandomNumberGenerator.Create();
+			var generator = RandomNumberGenerator.Create();
 
-		//	generator.GetBytes(randomNumber);
+			generator.GetBytes(randomNumber);
 
-		//	return new RefreshToken
-		//	{
-		//		Token = Convert.ToBase64String(randomNumber),
-		//		CreatedOn = DateTime.UtcNow,
-		//		ExpireOn = DateTime.UtcNow.AddDays(_jwtSettings.JWTRefreshTokenExpire)
-		//	};
-		//}
+			return new RefreshToken
+			{
+				Token = Convert.ToBase64String(randomNumber),
+				CreatedOn = DateTime.UtcNow,
+				ExpireOn = DateTime.UtcNow.AddDays(_jwtSettings.JWTRefreshTokenExpire)
+			};
+		}
 
+		private async Task CheckRefreshToken(UserManager<ApplicationUser> userManager, ApplicationUser user, UserDto response)
+		{
+			if (user.RefreshTokens.Any(x => x.IsActive))
+			{
+				var oldRefreshToken = user.RefreshTokens.FirstOrDefault(x => x.IsActive);
 
-		public async Task<string> SignInAsync(string email, string password)
+				if (oldRefreshToken is null)
+					return;
+
+				response.RefreshToken = oldRefreshToken.Token;
+				response.RefreshTokenExpiryTime = oldRefreshToken.ExpireOn;
+			}
+			else
+			{
+				var newRefreshToken = GenerateRefreshToken();
+
+				response.RefreshToken = newRefreshToken.Token;
+
+				response.RefreshTokenExpiryTime = newRefreshToken.ExpireOn;
+
+				user.RefreshTokens.Add(newRefreshToken);
+
+				await userManager.UpdateAsync(user);
+			}
+		}
+
+		private string? ValidateToken(string token)
+		{
+			var authKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
+			var tokenHandler = new JwtSecurityTokenHandler();
+			try
+			{
+				var validationParameters = new TokenValidationParameters
+				{
+					ValidateIssuerSigningKey = true,
+					IssuerSigningKey = authKey,
+					ValidateIssuer = false,
+					ValidateAudience = false,
+					ValidateLifetime = false,
+					ClockSkew = TimeSpan.Zero
+				};
+
+				var principal = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
+
+				var jwtToken = validatedToken as JwtSecurityToken;
+
+				if (jwtToken != null)
+				{
+					var userId = jwtToken.Claims.FirstOrDefault(x => x.Type == ClaimTypes.PrimarySid)?.Value;
+
+					if (userId != null)
+						return userId;
+					return null;
+				}
+				return null;
+			}
+			catch
+			{
+				return null;
+			}
+		}
+
+		public async Task<UserDto> GetRefreshToken(RefreshDto refreshDto)
+		{
+			var userId = ValidateToken(refreshDto.Token);
+
+			if (userId is null)
+				return new UserDto
+				{
+					Status = Status.NotFound
+				};
+
+			var user = await _userManager.FindByIdAsync(userId);
+
+			if (user is null)
+				return new UserDto
+				{
+					Status = Status.NotFound
+				};
+
+			var refreshToken = user.RefreshTokens.FirstOrDefault(x => x.Token == refreshDto.RefreshToken && x.IsActive);
+
+			if (refreshToken is null)
+				return new UserDto
+				{
+					Status = Status.TokenNotFound
+				};
+
+			refreshToken.RevokedOn = DateTime.UtcNow;
+
+			var newToken = await GenerateTokenAsync(user);
+
+			var newRefreshToken = GenerateRefreshToken();
+
+			user.RefreshTokens.Add(newRefreshToken);
+
+			await _userManager.UpdateAsync(user);
+
+			var userDto = new UserDto
+			{
+				FullName = user.FullName,
+				Status = Status.Success,
+				Email = user.Email!,
+				Id = user.Id,
+				PhoneNumber = user.PhoneNumber!,
+				Token = newToken,
+				RefreshToken = newRefreshToken.Token,
+				RefreshTokenExpiryTime = newRefreshToken.ExpireOn
+			};
+
+			return userDto;
+
+		}
+
+		public async Task<bool> RevokeRefreshToken(RefreshDto refreshDto)
+		{
+			var userId = ValidateToken(refreshDto.Token);
+
+			if (userId is null)
+				return false;
+
+			var user = await _userManager.FindByIdAsync(userId);
+
+			if (user is null)
+				return false;
+
+			var refreshToken = user.RefreshTokens.FirstOrDefault(x => x.Token == refreshDto.RefreshToken && x.IsActive);
+
+			if (refreshToken is null)
+				return false;
+
+			refreshToken.RevokedOn = DateTime.UtcNow;
+
+			await _userManager.UpdateAsync(user);
+
+			return true;
+		}
+
+		public async Task<UserDto> SignInAsync(string email, string password)
 		{
 			var user = await _userManager.FindByEmailAsync(email);
 			if (user is null)
-				return Status.NotFound;
+			{
+				return new UserDto
+				{
+					Status = Status.NotFound
+				};
+			}
 
 			var result = await _signIn.CheckPasswordSignInAsync(user, password, false);
 
 
-
 			if (!user.EmailConfirmed)
-				return Status.EmailNotConfirmed;
+				return new UserDto
+				{
+					Status = Status.EmailNotConfirmed
+				};
 
 			else if (result.IsLockedOut)
-				return Status.LockedOut;
+
+				return new UserDto
+				{
+					Status = Status.LockedOut
+				};
 
 			if (!result.Succeeded)
-				return Status.InvalidPassword;
+				return new UserDto
+				{
+					Status = Status.InvalidPassword
+				};
+
 			else
 			{
 				var token = await GenerateTokenAsync(user);
-				return token;
+
+				var userDto = new UserDto
+				{
+					FullName = user.FullName,
+					Status = Status.Success,
+					Email = user.Email!,
+					Id = user.Id,
+					PhoneNumber = user.PhoneNumber!,
+					Token = token
+				};
+
+				await CheckRefreshToken(_userManager, user, userDto);
+
+				return userDto;
 			}
 
 		}

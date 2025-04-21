@@ -15,8 +15,9 @@ namespace SchoolSystem.Core.AppMetaData
 		public static class StudentRouting
 		{
 			public const string prefix = Rule + "student";
-			public const string list = prefix + "/list";
+			
 			public const string PaginatedList = prefix + "/PaginatedList";
+			public const string list = prefix + "/list";
 			public const string id = prefix + "/{id}";
 			public const string add = prefix + "/add";
 			public const string Edit = prefix + "/Edit";
@@ -26,6 +27,7 @@ namespace SchoolSystem.Core.AppMetaData
 		public static class DepartmentRouting
 		{
 			public const string prefix = Rule + "department";
+			
 			public const string list = prefix + "/list";
 			public const string id = prefix + "/{id}";
 			public const string add = prefix + "/add";
@@ -36,16 +38,18 @@ namespace SchoolSystem.Core.AppMetaData
 		public static class AccountRouting
 		{
 			public const string prefix = Rule + "account";
+			
 			public const string list = prefix + "/list";
 			public const string id = prefix + "/{id}";
-			public const string register = prefix + "/register";
 			public const string Edit = prefix + "/Edit";
 			public const string Delete = prefix + "/{id}";
-			public const string ChangePassword = prefix + "/ChangePassword";
+			
+			public const string register = prefix + "/register";
 			public const string SendCode = prefix + "/SendCode";
 			public const string VerfiyCode = prefix + "/VerfiyCode";
 			public const string ResetPassword = prefix + "/ResetPassword";
 			public const string EmailConfirmation = prefix + "/EmailConfirmation";
+			public const string ChangePassword = prefix + "/ChangePassword";
 		}
 
 		public static class Dashboard
@@ -67,12 +71,17 @@ namespace SchoolSystem.Core.AppMetaData
 		public static class AuthenticationRouting
 		{
 			public const string prefix = Rule + "Authentication";
+			
 			public const string list = prefix + "/list";
 			public const string id = prefix + "/{id}";
-			public const string register = prefix + "/register";
 			public const string Edit = prefix + "/Edit";
 			public const string Delete = prefix + "/{id}";
+			
+			public const string register = prefix + "/register";
 			public const string SignIn = prefix + "/SignIn";
+
+			public const string RefreshToken = prefix + "/RefreshToken";
+			public const string RevokeRefreshToken = prefix + "/RevokeRefreshToken";
 		}
 
 	}

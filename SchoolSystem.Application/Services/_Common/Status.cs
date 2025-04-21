@@ -10,6 +10,7 @@ namespace SchoolSystem.Application.Services._Common
 	{
 		public static string BadRequest = "BadRequest";
 		public static string NotFound = "NotFound";
+		public static string TokenNotFound = "TokenNotFound";
 		public static string Success = "Success";
 		public static string Unauthorized = "Unauthorized";
 		public static string Exist = "Exist";
