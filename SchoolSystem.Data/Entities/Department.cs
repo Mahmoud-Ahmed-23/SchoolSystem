@@ -1,8 +1,8 @@
-﻿using SchoolSystem.Data.Commons;
+﻿using SchoolSystem.Core.Commons;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolProject.Data.Entities
+namespace SchoolProject.Core.Entities
 {
 	public class Department : GeneralLocalizableEntity
 	{

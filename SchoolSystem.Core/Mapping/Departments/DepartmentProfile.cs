@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using SchoolProject.Data.Entities;
-using SchoolSystem.Core.Features.Departments.Results;
+using SchoolProject.Core.Entities;
+using SchoolSystem.Application.Features.Departments.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Mapping.Departments
+namespace SchoolSystem.Application.Mapping.Departments
 {
 	internal class DepartmentProfile : Profile
 	{

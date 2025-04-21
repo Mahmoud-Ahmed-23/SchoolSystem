@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Data.Commons
+namespace SchoolSystem.Core.Commons
 {
 	public class GeneralLocalizableEntity
 	{

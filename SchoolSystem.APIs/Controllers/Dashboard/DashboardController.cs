@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolSystem.APIs.Bases;
-using SchoolSystem.Core.Features.Accounts.Commands.Models;
-using SchoolSystem.Core.Features.Accounts.Queries.Models;
-using SchoolSystem.Core.Features.Accounts.Results;
-using SchoolSystem.Core.Features.Authorization.Commands.Models;
-using SchoolSystem.Core.Features.Authorization.Queries.Models;
-using SchoolSystem.Data.AppMetaData;
+using SchoolSystem.Application.Features.Accounts.Commands.Models;
+using SchoolSystem.Application.Features.Accounts.Queries.Models;
+using SchoolSystem.Application.Features.Accounts.Results;
+using SchoolSystem.Application.Features.Authorization.Commands.Models;
+using SchoolSystem.Application.Features.Authorization.Queries.Models;
+using SchoolSystem.Core.AppMetaData;
 
 namespace SchoolSystem.APIs.Controllers.Dashboard
 {

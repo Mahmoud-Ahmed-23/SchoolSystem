@@ -9,9 +9,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using FluentValidation;
-using SchoolSystem.Core.Bases;
+using SchoolSystem.Application.Bases;
 
-namespace SchoolSystem.Core.Middlewares
+namespace SchoolSystem.Application.Middlewares
 {
 	public class ErrorHandlerMiddleware
 	{

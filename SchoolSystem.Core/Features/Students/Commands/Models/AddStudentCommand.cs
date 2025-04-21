@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Students.Results;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Students.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Students.Commands.Models
+namespace SchoolSystem.Application.Features.Students.Commands.Models
 {
 	public class AddStudentCommand : IRequest<Response<string>>
 	{

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
-namespace SchoolSystem.Core._SharedResources
+namespace SchoolSystem.Application._SharedResources
 {
 	public static class SharedResourcesKeys
 	{

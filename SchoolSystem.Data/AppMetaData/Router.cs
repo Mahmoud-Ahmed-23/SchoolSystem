@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Data.AppMetaData
+namespace SchoolSystem.Core.AppMetaData
 {
 	public class Router
 	{

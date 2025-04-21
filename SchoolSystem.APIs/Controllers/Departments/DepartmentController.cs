@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolSystem.APIs.Bases;
-using SchoolSystem.Core.Features.Departments.Queries.Models;
-using SchoolSystem.Core.Features.Departments.Results;
-using SchoolSystem.Data.AppMetaData;
+using SchoolSystem.Application.Features.Departments.Queries.Models;
+using SchoolSystem.Application.Features.Departments.Results;
+using SchoolSystem.Core.AppMetaData;
 
 namespace SchoolSystem.APIs.Controllers.Departments
 {

@@ -2,19 +2,19 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Accounts.Commands.Models;
-using SchoolSystem.Data.Entities.Identity;
-using SchoolSystem.Service._Common;
-using SchoolSystem.Service.Abstracts;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Accounts.Commands.Models;
+using SchoolSystem.Core.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services._Common;
+using SchoolSystem.Application.Services.Abstracts;
 
-namespace SchoolSystem.Core.Features.Accounts.Commands.Handlers
+namespace SchoolSystem.Application.Features.Accounts.Commands.Handlers
 {
 	public class UserCommandHandler :
 		ResponseHandler,

@@ -1,15 +1,14 @@
 ﻿using MediatR;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Students.Results;
-using SchoolSystem.Infrastructure.Specifications._SpecParams;
-using SchoolSystem.Infrastructure.Specifications._SpecParams.Students;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Students.Results;
+using SchoolSystem.Application.Services._Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Students.Queries.Models
+namespace SchoolSystem.Application.Features.Students.Queries.Models
 {
 	public class GetPaginatedStudentListQuery : IRequest<Response<Pagination<ReturnStudentResponse>>>
 	{

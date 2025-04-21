@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolSystem.APIs.Bases;
-using SchoolSystem.Core.Features.Authentication.Commands.Models;
-using SchoolSystem.Data.AppMetaData;
+using SchoolSystem.Application.Features.Authentication.Commands.Models;
+using SchoolSystem.Core.AppMetaData;
 
 namespace SchoolSystem.APIs.Controllers.Authentications
 {

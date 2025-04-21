@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
+using SchoolSystem.Application._SharedResources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Bases
+namespace SchoolSystem.Application.Bases
 {
 	public class ResponseHandler
 	{

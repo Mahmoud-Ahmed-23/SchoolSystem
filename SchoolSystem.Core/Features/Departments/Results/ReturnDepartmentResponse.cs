@@ -1,4 +1,4 @@
-﻿using SchoolProject.Data.Entities;
+﻿using SchoolProject.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Departments.Results
+namespace SchoolSystem.Application.Features.Departments.Results
 {
 	public class ReturnDepartmentResponse
 	{

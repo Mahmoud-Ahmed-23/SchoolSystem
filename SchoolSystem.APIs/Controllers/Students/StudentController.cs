@@ -1,14 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SchoolProject.Data.Entities;
+using SchoolProject.Core.Entities;
 using SchoolSystem.APIs.Bases;
-using SchoolSystem.Core.Features.Students.Commands.Models;
-using SchoolSystem.Core.Features.Students.Queries.Models;
-using SchoolSystem.Core.Features.Students.Results;
-using SchoolSystem.Data.AppMetaData;
-using SchoolSystem.Infrastructure.Specifications._SpecParams;
-using SchoolSystem.Infrastructure.Specifications._SpecParams.Students;
+using SchoolSystem.Application.Features.Students.Commands.Models;
+using SchoolSystem.Application.Features.Students.Queries.Models;
+using SchoolSystem.Application.Features.Students.Results;
+using SchoolSystem.Application.Services._Common;
+using SchoolSystem.Core.AppMetaData;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

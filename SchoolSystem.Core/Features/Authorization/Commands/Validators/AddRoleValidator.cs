@@ -1,15 +1,15 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Features.Authorization.Commands.Models;
-using SchoolSystem.Service.Abstracts;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Features.Authorization.Commands.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services.Abstracts;
 
-namespace SchoolSystem.Core.Features.Authorization.Commands.Validators
+namespace SchoolSystem.Application.Features.Authorization.Commands.Validators
 {
 	public class AddRoleValidator : AbstractValidator<AddRoleCommand>
 	{

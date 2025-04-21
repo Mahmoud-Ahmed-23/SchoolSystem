@@ -1,21 +1,20 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
-using SchoolProject.Data.Entities;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Students.Queries.Models;
-using SchoolSystem.Core.Features.Students.Results;
-using SchoolSystem.Infrastructure.Specifications._SpecParams;
-using SchoolSystem.Infrastructure.Specifications.Students;
-using SchoolSystem.Service.Abstracts;
+using SchoolProject.Core.Entities;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Students.Queries.Models;
+using SchoolSystem.Application.Features.Students.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services.Abstracts;
+using SchoolSystem.Application.Services._Common;
 
-namespace SchoolSystem.Core.Features.Students.Queries.Handlers
+namespace SchoolSystem.Application.Features.Students.Queries.Handlers
 {
 	public class StudentQueryHandler :
 		ResponseHandler,

@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
+using SchoolSystem.Application._SharedResources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Students.Behaviors
+namespace SchoolSystem.Application.Features.Students.Behaviors
 {
 	public class ValidationBehavior<TRequest, TResponse>(
 		IEnumerable<IValidator<TRequest>> _validators,

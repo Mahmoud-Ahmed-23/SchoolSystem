@@ -1,17 +1,17 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Authentication.Commands.Models;
-using SchoolSystem.Service._Common;
-using SchoolSystem.Service.Abstracts;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Authentication.Commands.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services._Common;
+using SchoolSystem.Application.Services.Abstracts;
 
-namespace SchoolSystem.Core.Features.Authentication.Commands.Handlers
+namespace SchoolSystem.Application.Features.Authentication.Commands.Handlers
 {
 	public class AuthenticationCommandHandler :
 		ResponseHandler,

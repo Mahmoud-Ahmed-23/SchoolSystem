@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Data.Helpers
+namespace SchoolSystem.Core.Helpers
 {
 	public class JwtSettings
 	{
@@ -12,6 +12,7 @@ namespace SchoolSystem.Data.Helpers
 		public string Audience { get; set; }
 		public string Issuer { get; set; }
 		public double DurationInDays { get; set; }
+		public double JWTRefreshTokenExpire { get; set; }
 
 	}
 }
