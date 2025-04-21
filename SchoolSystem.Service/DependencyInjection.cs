@@ -2,41 +2,23 @@
 using MailKit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SchoolSystem.Data.Helpers;
-using SchoolSystem.Service.Abstracts;
-using SchoolSystem.Service.Abstracts.SendEmail;
-using SchoolSystem.Service.Implementation;
+using SchoolSystem.Core.Helpers;
+using SchoolSystem.Application.Services.Abstracts;
+using SchoolSystem.Application.Services.Abstracts.SendEmail;
+using SchoolSystem.Application.Services.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Service
+namespace SchoolSystem.Application
 {
 	public static class DependencyInjection
 	{
 		public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
 		{
-			services.AddTransient(typeof(IStudentService), typeof(StudentService));
-
-			services.AddTransient(typeof(IDepartmentService), typeof(DepartmentService));
-
-			services.AddTransient(typeof(IAuthService), typeof(AuthService));
-
-			services.AddTransient(typeof(IAuthenticationService), typeof(AuthenticationService));
-
-			services.AddTransient(typeof(IAuthorizationService), typeof(AuthorizationService));
-
-			services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-
-			services.AddTransient(typeof(IEmailService), typeof(EmailService));
-
-			var JwtSettings = new JwtSettings();
-
-			configuration.GetSection(nameof(JwtSettings)).Bind(JwtSettings);
-
-			services.AddSingleton(JwtSettings);
+			
 
 			return services;
 		}

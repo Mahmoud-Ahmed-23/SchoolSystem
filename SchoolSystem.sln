@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.APIs", "SchoolSystem.APIs\SchoolSystem.APIs.csproj", "{A3514B89-7D70-4199-BC69-10E44638CD5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Data", "SchoolSystem.Data\SchoolSystem.Data.csproj", "{061A9802-093A-4676-80C6-3786B145CBE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Core", "SchoolSystem.Data\SchoolSystem.Core.csproj", "{061A9802-093A-4676-80C6-3786B145CBE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Infrastructure", "SchoolSystem.Infrastructure\SchoolSystem.Infrastructure.csproj", "{B66787B1-91C7-41AC-8797-1F74531AEF81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Service", "SchoolSystem.Service\SchoolSystem.Service.csproj", "{98E55DB6-1CD1-4EB8-A58B-750F87BB83AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Core", "SchoolSystem.Core\SchoolSystem.Core.csproj", "{206190FB-838E-4246-9725-9D4EEC91B1B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Application", "SchoolSystem.Core\SchoolSystem.Application.csproj", "{206190FB-838E-4246-9725-9D4EEC91B1B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{B66787B1-91C7-41AC-8797-1F74531AEF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66787B1-91C7-41AC-8797-1F74531AEF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B66787B1-91C7-41AC-8797-1F74531AEF81}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98E55DB6-1CD1-4EB8-A58B-750F87BB83AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98E55DB6-1CD1-4EB8-A58B-750F87BB83AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98E55DB6-1CD1-4EB8-A58B-750F87BB83AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98E55DB6-1CD1-4EB8-A58B-750F87BB83AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{206190FB-838E-4246-9725-9D4EEC91B1B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{206190FB-838E-4246-9725-9D4EEC91B1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{206190FB-838E-4246-9725-9D4EEC91B1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,5 +36,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30D5FFC2-DF59-46E5-A488-3819B3C27FC6}
 	EndGlobalSection
 EndGlobal

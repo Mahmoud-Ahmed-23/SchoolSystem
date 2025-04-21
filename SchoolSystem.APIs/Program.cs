@@ -1,10 +1,10 @@
 
 using Microsoft.Extensions.Options;
 using SchoolSystem.APIs.Extensions;
-using SchoolSystem.Core;
-using SchoolSystem.Core.Middlewares;
+using SchoolSystem.Application;
+using SchoolSystem.Application.Middlewares;
 using SchoolSystem.Infrastructure;
-using SchoolSystem.Service;
+using SchoolSystem.Application;
 using SchoolSystem.APIs.Extensions;
 using Microsoft.AspNetCore.Builder;
 
@@ -25,7 +25,6 @@ namespace SchoolSystem.APIs
 
 			builder.Services.AddInfrastructureServices(builder.Configuration)
 							.AddApplicationServices(builder.Configuration)
-							.AddCoreServices()
 							.AddIdentityServices(builder.Configuration);
 
 

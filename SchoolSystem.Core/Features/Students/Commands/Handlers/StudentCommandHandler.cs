@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
-using SchoolProject.Data.Entities;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Students.Commands.Models;
-using SchoolSystem.Core.Features.Students.Results;
-using SchoolSystem.Service.Abstracts;
+using SchoolProject.Core.Entities;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Students.Commands.Models;
+using SchoolSystem.Application.Features.Students.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services.Abstracts;
 
-namespace SchoolSystem.Core.Features.Students.Commands.Handlers
+namespace SchoolSystem.Application.Features.Students.Commands.Handlers
 {
 	public class StudentCommandHandler :
 		ResponseHandler,

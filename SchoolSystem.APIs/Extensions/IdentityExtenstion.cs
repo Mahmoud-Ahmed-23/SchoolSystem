@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SchoolSystem.Data.Entities.Identity;
-using SchoolSystem.Infrastructure.DbContexts;
+using SchoolSystem.Core.Entities.Identity;
+using SchoolSystem.Infrastructure.Persistence.DbContexts;
 using System.Text;
 
 namespace SchoolSystem.APIs.Extensions

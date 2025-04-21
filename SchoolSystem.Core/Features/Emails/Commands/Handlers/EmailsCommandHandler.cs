@@ -1,19 +1,14 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Emails.Commands.Models;
-using SchoolSystem.Data.Entities.Identity;
-using SchoolSystem.Service.Abstracts.SendEmail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Emails.Commands.Models;
+using SchoolSystem.Application.Services.Abstracts.SendEmail;
+using SchoolSystem.Core.Entities.Identity;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Emails.Commands.Handlers
+namespace SchoolSystem.Application.Features.Emails.Commands.Handlers
 {
 	public class EmailsCommandHandler :
 		ResponseHandler,

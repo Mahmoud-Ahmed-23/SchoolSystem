@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Data.Helpers
+namespace SchoolSystem.Core.Helpers
 {
 	public class EmailSettings
 	{

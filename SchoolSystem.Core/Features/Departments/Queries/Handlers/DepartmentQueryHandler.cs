@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Departments.Queries.Models;
-using SchoolSystem.Core.Features.Departments.Results;
-using SchoolSystem.Service.Abstracts;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Departments.Queries.Models;
+using SchoolSystem.Application.Features.Departments.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services.Abstracts;
 
-namespace SchoolSystem.Core.Features.Departments.Queries.Handlers
+namespace SchoolSystem.Application.Features.Departments.Queries.Handlers
 {
 	public class DepartmentQueryHandler :
 		ResponseHandler,

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SchoolSystem.Core.Bases;
+using SchoolSystem.Application.Bases;
 using System.Net;
 
 namespace SchoolSystem.APIs.Bases

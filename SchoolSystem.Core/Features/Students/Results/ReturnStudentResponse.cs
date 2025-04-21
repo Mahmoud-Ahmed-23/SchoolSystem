@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Students.Results
+namespace SchoolSystem.Application.Features.Students.Results
 {
 	public class ReturnStudentResponse
 	{

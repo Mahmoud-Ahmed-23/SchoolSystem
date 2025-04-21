@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace SchoolSystem.Data.Entities.Identity
+namespace SchoolSystem.Core.Entities.Identity
 {
 	public class ApplicationUser : IdentityUser
 	{
@@ -10,6 +10,8 @@ namespace SchoolSystem.Data.Entities.Identity
 
 		public int? EmailConfirmResetCode { get; set; }
 		public DateTime? EmailConfirmResetCodeExpiry { get; set; }
+
+		public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 
 	}
 }

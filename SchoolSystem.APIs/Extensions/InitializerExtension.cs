@@ -1,4 +1,5 @@
-﻿using SchoolSystem.Infrastructure.Abstracts;
+﻿
+using SchoolSystem.Core.Abstracts.Persistence.DbInitializer;
 
 namespace SchoolSystem.APIs.Extensions
 {

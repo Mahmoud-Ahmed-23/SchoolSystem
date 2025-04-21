@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolProject.Data.Entities;
-using SchoolSystem.Infrastructure.Abstracts.Repositories;
-using SchoolSystem.Infrastructure.DbContexts;
-using SchoolSystem.Infrastructure.InfastructureBases.GenericRepos;
+using SchoolProject.Core.Entities;
+using SchoolSystem.Core.Abstracts.Persistence.Departments;
+using SchoolSystem.Infrastructure.Persistence.DbContexts;
+using SchoolSystem.Infrastructure.Persistence.InfastructureBases.GenericRepos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

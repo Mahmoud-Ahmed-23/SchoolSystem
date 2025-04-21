@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Bases;
-using SchoolSystem.Core.Features.Accounts.Queries.Models;
-using SchoolSystem.Core.Features.Accounts.Results;
-using SchoolSystem.Service.Abstracts;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Bases;
+using SchoolSystem.Application.Features.Accounts.Queries.Models;
+using SchoolSystem.Application.Features.Accounts.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolSystem.Application.Services.Abstracts;
 
-namespace SchoolSystem.Core.Features.Accounts.Queries.Handlers
+namespace SchoolSystem.Application.Features.Accounts.Queries.Handlers
 {
 	internal class UserQueryHandler :
 			ResponseHandler,

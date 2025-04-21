@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using SchoolProject.Data.Entities;
-using SchoolSystem.Core.Features.Students.Commands.Models;
-using SchoolSystem.Core.Features.Students.Results;
-using SchoolSystem.Infrastructure.Specifications._SpecParams;
+using SchoolProject.Core.Entities;
+using SchoolSystem.Application.Features.Students.Commands.Models;
+using SchoolSystem.Application.Features.Students.Results;
+using SchoolSystem.Application.Services._Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Mapping.Students
+namespace SchoolSystem.Application.Mapping.Students
 {
 	public class StudentProfile : Profile
 	{

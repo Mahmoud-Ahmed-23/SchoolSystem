@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using SchoolSystem.Core._SharedResources;
-using SchoolSystem.Core.Features.Accounts.Commands.Models;
+using SchoolSystem.Application._SharedResources;
+using SchoolSystem.Application.Features.Accounts.Commands.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Core.Features.Accounts.Commands.Validators
+namespace SchoolSystem.Application.Features.Accounts.Commands.Validators
 {
 	public class ChangePasswordValidator : AbstractValidator<ChangePasswordCommand>
 	{
