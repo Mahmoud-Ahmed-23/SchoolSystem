@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿	using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Entities;

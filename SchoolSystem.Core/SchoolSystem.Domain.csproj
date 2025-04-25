@@ -4,8 +4,8 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<AssemblyName>SchoolSystem.Core</AssemblyName>
-		<RootNamespace>SchoolSystem.Core</RootNamespace>
+		<AssemblyName>SchoolSystem.Domain</AssemblyName>
+		<RootNamespace>SchoolSystem.Domain</RootNamespace>
 	</PropertyGroup>
 
 
